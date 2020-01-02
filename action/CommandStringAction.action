@@ -1,5 +1,5 @@
 string command
 ---
-robot_simple_action_manager_msgs/CommandStringResult result
+robot_simple_command_manager_msgs/CommandStringResult result
 ---
-robot_simple_action_manager_msgs/CommandStringFeedback feedback
+robot_simple_command_manager_msgs/CommandStringFeedback feedback
