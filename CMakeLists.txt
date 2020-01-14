@@ -52,6 +52,7 @@ add_message_files(
     CommandStringFeedback.msg
     CommandStringResult.msg
     ReturnMessage.msg
+    StatusCodes.msg
 )
 
 ## Generate services in the 'srv' folder
