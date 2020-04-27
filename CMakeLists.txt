@@ -60,6 +60,8 @@ add_service_files(
     DIRECTORY srv
     FILES
     SetCommandString.srv
+    GetHandlers.srv
+    GetHandlerInfo.srv
 )
 
 ## Generate actions in the 'action' folder
