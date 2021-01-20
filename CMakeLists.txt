@@ -48,11 +48,14 @@ find_package(catkin REQUIRED
 ## Generate messages in the 'msg' folder
 add_message_files(
     FILES
+    CommandManager.msg
+    CommandManagerArray.msg
     CommandString.msg
     CommandStringFeedback.msg
     CommandStringResult.msg
     ReturnMessage.msg
     StatusCodes.msg
+    CommandLog.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -62,6 +65,9 @@ add_service_files(
     SetCommandString.srv
     GetHandlers.srv
     GetHandlerInfo.srv
+    ManageCommandManager.srv
+    GetCommandManagerList.srv
+    ToggleAcquisition.srv
 )
 
 ## Generate actions in the 'action' folder
