@@ -1,5 +1,5 @@
 string name
 ---
 bool success
-string description
+string[] description
 string[] types
