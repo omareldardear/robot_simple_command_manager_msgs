@@ -48,6 +48,7 @@ find_package(catkin REQUIRED
 ## Generate messages in the 'msg' folder
 add_message_files(
     FILES
+    CommandManagerStatus.msg
     CommandManager.msg
     CommandManagerArray.msg
     CommandString.msg
@@ -55,6 +56,8 @@ add_message_files(
     CommandStringResult.msg
     ReturnMessage.msg
     StatusCodes.msg
+    SequencerStatus.msg
+    SequenceStatus.msg
     CommandLog.msg
 )
 
@@ -67,7 +70,6 @@ add_service_files(
     GetHandlerInfo.srv
     ManageCommandManager.srv
     GetCommandManagerList.srv
-    ToggleAcquisition.srv
 )
 
 ## Generate actions in the 'action' folder
