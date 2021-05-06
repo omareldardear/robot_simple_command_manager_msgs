@@ -59,6 +59,7 @@ add_message_files(
     SequencerStatus.msg
     SequenceStatus.msg
     CommandLog.msg
+    CommandLogArray.msg
 )
 
 ## Generate services in the 'srv' folder
