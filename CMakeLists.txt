@@ -31,6 +31,7 @@ add_message_files(
     CommandScheduler.msg
     EventScheduler.msg
     EventSchedulerArray.msg
+    HandlerInfo.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -44,6 +45,7 @@ add_service_files(
     GetCommandManagerList.srv
     GetCommandSchedulerList.srv
     AddSchedule.srv
+    GetHandlerInfoList.srv
 )
 
 ## Generate actions in the 'action' folder
