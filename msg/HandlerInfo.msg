@@ -1,5 +1,9 @@
 string name
-string[] description
-string[] types
-string[] output_description
+string description
+string category
+string[] args_names
+string[] args_descriptions
+string[] args_types
+string[] output_names
+string[] output_descriptions
 string[] output_types
