@@ -1,68 +1,17 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.8)
 project(robot_simple_command_manager_msgs)
 
-## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
-
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
-find_package(catkin REQUIRED 
-    message_generation
-    actionlib_msgs
-)
-
-
-## Generate messages in the 'msg' folder
-add_message_files(
-    FILES
-    Categories.msg
-    CommandCategory.msg
-    CommandManagerStatus.msg
-    CommandManager.msg
-    CommandManagerArray.msg
-    CommandString.msg
-    CommandStringFeedback.msg
-    CommandStringResult.msg
-    ReturnMessage.msg
-    StatusCodes.msg
-    SequencerStatus.msg
-    SequenceStatus.msg
-    CommandLog.msg
-    CommandLogArray.msg
-    CommandScheduler.msg
-    EventScheduler.msg
-    EventSchedulerArray.msg
-    HandlerInfo.msg
-)
-
-## Generate services in the 'srv' folder
-add_service_files(
-    DIRECTORY srv
-    FILES
-    SetCommandString.srv
-    GetHandlers.srv
-    GetHandlerInfo.srv
-    ManageCommandManager.srv
-    GetCommandManagerList.srv
-    GetCommandSchedulerList.srv
-    AddSchedule.srv
-    GetHandlerInfoList.srv
-)
-
-## Generate actions in the 'action' folder
-add_action_files(
-    FILES
-    RobotSimpleCommand.action
-)
-
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-    DEPENDENCIES
-    actionlib_msgs
-)
-
-catkin_package(
-   CATKIN_DEPENDS message_runtime actionlib_msgs
-)
-
+if(DEFINED ENV{ROS_VERSION})
+  if($ENV{ROS_VERSION} EQUAL "2")
+    # to avoid cmake warning: "Manually-specified variables were not used by the project"
+    unset(CATKIN_INSTALL_INTO_PREFIX_ROOT)
+    unset(CATKIN_SYMLINK_INSTALL)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeListsROS2.txt)
+  elseif($ENV{ROS_VERSION} EQUAL "1")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeListsROS1.txt)
+  else()
+    message(ERROR "invalid ROS_VERSION environment variable: $ENV{ROS_VERSION}")
+  endif()
+else()
+  message(ERROR "ROS_VERSION environment variable is not set!")
+endif()

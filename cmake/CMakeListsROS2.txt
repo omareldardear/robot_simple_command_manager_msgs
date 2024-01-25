@@ -1,0 +1,62 @@
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(actionlib_msgs REQUIRED)
+
+  
+FILE(GLOB msg_files_abs msg/*.msg)
+
+foreach(MSG_FILE ${msg_files_abs})
+    file(RELATIVE_PATH MSG_FILE_REL ${CMAKE_CURRENT_SOURCE_DIR}} ${MSG_FILE})
+    list(APPEND msg_files ${MSG_FILE_REL})
+endforeach()
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  ${msg_files}
+  DEPENDENCIES builtin_interfaces actionlib_msgs
+  ADD_LINTER_TESTS
+  )
+
+
+if(BUILD_TESTING)
+  find_package(ament_cmake REQUIRED)
+  find_package(ament_cmake_copyright REQUIRED)
+  find_package(ament_cmake_lint_cmake REQUIRED)
+  find_package(ament_cmake_xmllint REQUIRED)
+
+  ament_copyright()
+  ament_lint_cmake()
+  ament_xmllint()
+endif()
+
+#target_include_directories(my_target
+#  PUBLIC
+#    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+#    $<INSTALL_INTERFACE:include>)
+
+# install(
+#  FILES map_rules.yaml
+#  DESTINATION share/${PROJECT_NAME}
+#)
+
+#ament_export_dependencies(
+#  rosidl_default_runtime
+#  std_msgs
+#  actionlib_msgs
+#  sensor_msgs
+#  vision_msgs
+#  geometry_msgs
+#  )
+
+#ament_target_dependencies(builtin_interfaces 
+#  rosidl_default_runtime 
+#  std_msgs
+#  actionlib_msgs
+#  sensor_msgs
+#  vision_msgs
+#  geometry_msgs
+#  )
+
+ament_package()
